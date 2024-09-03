@@ -25,7 +25,7 @@ function getWeekDay() {
     let days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
     return days[date.getDay()];
 }
-
+ 
 function getCurrentHour() {
     // Considerar os métodos abaixo para incluir zeros em numeros < 10
     // padStart()
@@ -60,3 +60,8 @@ function printCurrentHour() {
 
 
 setInterval(printCurrentHour, 1000);
+
+// Atualizar o dialog a cada segundo
+// Atualizar dia e hora quando for 00:00
+// Ao clicar os botões, quero salvar data e hora
+    // Lembrando que o que vai mudar é o tipo do ponto ("entrada", "saída intervalo", "entrada intervalo", "saída")
