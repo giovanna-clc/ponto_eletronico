@@ -1,67 +1,46 @@
 const diaSemana = document.getElementById("dia-semana");
 const diaMesAno = document.getElementById("dia-mes-ano");
 const horaMinSeg = document.getElementById("hora-min-seg");
+const arrayDayWeek = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sabado"]
 
-const btnBaterPonto = document.getElementById("btn-bater-ponto");
-btnBaterPonto.addEventListener("click", register);
 
 const dialogPonto = document.getElementById("dialog-ponto");
+
+const btnRegistrarPonto = document.getElementById("btn-registrar-ponto");
+btnRegistrarPonto.addEventListener("click", () => {
+    dialogPonto.showModal();
+});
+
 
 const btnDialogFechar = document.getElementById("btn-dialog-fechar");
 btnDialogFechar.addEventListener("click", () => {
     dialogPonto.close();
 });
 
-diaSemana.textContent = getWeekDay();
-diaMesAno.textContent = getCurrentDate();
+// Todo conjunto numérico (exceto ano) deve ter 2 dígitos (adicionar 0 se for menor q 10)
+// Retornar dia da semana por extenso (em pt-br)
 
-
-function register() {
-    dialogPonto.showModal();
-}
-
-function getWeekDay() {
+function daySemana() {
+    //retornar dia da semana
     const date = new Date();
-    let days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
-    return days[date.getDay()];
+    return arrayDayWeek[date.getDay()];
 }
- 
-function getCurrentHour() {
-    // Considerar os métodos abaixo para incluir zeros em numeros < 10
-    // padStart()
-    // slice()
-    // formatos de hora considerando o locale do usuário
+
+function dataCompleta() {
+    const date = new Date();
+    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+}
+
+function horaCompleta() {
     const date = new Date();
     return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 }
 
-
-function getCurrentDate() {
-    // Alterar a solução para considerar padStart ou slice
-    // Considerar formatos diferentes da data, conforme localização
-    // do usuário dd/mm/aaaa, mm/dd/aaaa, aaaa/mm/dd, aaaa.mm.dd
-    // Verificar se no Date() há algum método que possa auxiliar
-    // locale
-    const date = new Date();
-    let month = date.getMonth();
-    let day = date.getDate();
-    if (day < 10) {
-        day = "0" + day
-    }
-    if (month < 10) {
-        month = "0" + (month + 1)
-    }
-    return day + "/" + month + "/" + date.getFullYear();
+function atualizaHora() {
+    horaMinSeg.textContent = horaCompleta();
 }
 
-function printCurrentHour() {
-    horaMinSeg.textContent = getCurrentHour();
-}
+setInterval(atualizaHora, 1000);
 
-
-setInterval(printCurrentHour, 1000);
-
-// Atualizar o dialog a cada segundo
-// Atualizar dia e hora quando for 00:00
-// Ao clicar os botões, quero salvar data e hora
-    // Lembrando que o que vai mudar é o tipo do ponto ("entrada", "saída intervalo", "entrada intervalo", "saída")
+diaSemana.textContent = daySemana();
+diaMesAno.textContent = dataCompleta();
