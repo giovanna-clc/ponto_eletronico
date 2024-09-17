@@ -1,3 +1,6 @@
+// TO-DO:
+// Organizar código-fonte,
+
 const diaSemana = document.getElementById("dia-semana");
 const diaMesAno = document.getElementById("dia-mes-ano");
 const horaMinSeg = document.getElementById("hora-min-seg");
@@ -12,11 +15,77 @@ btnDialogFechar.addEventListener("click", () => {
     dialogPonto.close();
 });
 
+
+let registerLocalStorage = getRegisterLocalStorage();
+
+const dialogData = document.getElementById("dialog-data");
+const dialogHora = document.getElementById("dialog-hora");
+
+
 diaSemana.textContent = getWeekDay();
 diaMesAno.textContent = getCurrentDate();
 
 
+// TO-DO:
+// Por que esta função não retorna a localização?
+// [doc]
+function getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition((position) => {
+        return position;
+    });
+}
+
+
+const btnDialogBaterPonto = document.getElementById("btn-dialog-bater-ponto");
+btnDialogBaterPonto.addEventListener("click", () => {
+
+    let typeRegister = document.getElementById("tipos-ponto").value;
+
+    let ponto = {
+        "data": getCurrentDate(),
+        "hora": getCurrentHour(),
+        "localizacao": getCurrentPosition(),
+        "id": 1,
+        "tipo": typeRegister
+    }
+
+    console.log(ponto);
+
+    saveRegisterLocalStorage(ponto);
+
+    localStorage.setItem("lastTypeRegister", typeRegister);
+
+    dialogPonto.close();
+
+    // TO-DO:
+    // Fechar o dialog ao bater ponto e apresentar, de alguma forma
+    // uma confirmação (ou não) para o usuário
+});
+
+
+function saveRegisterLocalStorage(register) {
+    registerLocalStorage.push(register); // Array
+    localStorage.setItem("register", JSON.stringify(registerLocalStorage));
+} 
+
+
+// Esta função deve retornar sempre um ARRAY, mesmo que seja vazio
+function getRegisterLocalStorage() {
+    let registers = localStorage.getItem("register");
+
+    if(!registers) {
+        return [];
+    }
+
+    return JSON.parse(registers); // converte de JSON para Array
+}
+
+
 function register() {
+    // TO-DO:
+    // Atualizar hora a cada segundo e data 00:00:00
+    dialogData.textContent = "Data: " + getCurrentDate();
+    dialogHora.textContent = "Hora: " + getCurrentHour();
     dialogPonto.showModal();
 }
 
@@ -25,18 +94,15 @@ function getWeekDay() {
     let days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
     return days[date.getDay()];
 }
- 
+
 function getCurrentHour() {
-    // Considerar os métodos abaixo para incluir zeros em numeros < 10
-    // padStart()
-    // slice()
-    // formatos de hora considerando o locale do usuário
     const date = new Date();
-    return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    return String(date.getHours()).padStart(2, '0') + ":" + String(date.getMinutes()).padStart(2, '0') + ":" + String(date.getSeconds()).padStart(2, '0');
 }
 
 
 function getCurrentDate() {
+    // TO-DO:
     // Alterar a solução para considerar padStart ou slice
     // Considerar formatos diferentes da data, conforme localização
     // do usuário dd/mm/aaaa, mm/dd/aaaa, aaaa/mm/dd, aaaa.mm.dd
@@ -59,9 +125,5 @@ function printCurrentHour() {
 }
 
 
+printCurrentHour();
 setInterval(printCurrentHour, 1000);
-
-// Atualizar o dialog a cada segundo
-// Atualizar dia e hora quando for 00:00
-// Ao clicar os botões, quero salvar data e hora
-    // Lembrando que o que vai mudar é o tipo do ponto ("entrada", "saída intervalo", "entrada intervalo", "saída")
