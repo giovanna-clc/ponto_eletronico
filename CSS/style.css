@@ -25,6 +25,10 @@ body {
     text-align: center;
 }
 
+.btn-bater-ponto{
+    text-align: center;
+}
+
 #btn-dialog-fechar {
     position: absolute;
     top: 0;
