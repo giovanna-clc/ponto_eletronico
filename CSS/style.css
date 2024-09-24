@@ -26,7 +26,7 @@ body {
 }
 
 .btn-bater-ponto{
-    text-align: center;
+    position: center;
 }
 
 #btn-dialog-fechar {
