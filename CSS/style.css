@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(208, 218, 253);
+    background-color: rgb(222, 229, 255);
     margin: 0;
     padding: 0;
 }
@@ -37,7 +37,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ccc;
+    background-color: #4a40a1;
+    color: white;
     /* TO-DO: */
     /* posicionar fora da página */
     /* pode usar o translate no eixo Y */
