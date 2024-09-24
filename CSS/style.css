@@ -30,6 +30,16 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+    background-color: #232c5f;
+    font-family: 'Georgia', serif;
+    color: white;
+}
+
+#btn-dialog-bater-ponto {
+    font-family: 'Georgia', serif;
+    background-color: #232c5f;
+    font-family: 'Georgia', serif;
+    color: white;
 }
 
 /* Posicionamento do alerta no topo da página com position fixed */
