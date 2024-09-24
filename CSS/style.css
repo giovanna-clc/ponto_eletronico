@@ -39,8 +39,8 @@ body {
     font-family: 'Georgia', serif;
     background-color: #293474af;
     color: white;
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
     border: 2px solid #fffcfc;
     border-radius: 10px; /* Raio de 10 pixels */
 }
