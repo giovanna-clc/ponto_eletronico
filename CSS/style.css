@@ -70,6 +70,6 @@ body {
 }
 
 .data-hora p {
-    font-size: 1rem; /* tamanho relativo */
-    /* ??? */
+    font-size: 25px; /* tamanho relativo */
+    font-family: 'Georgia', serif;
 }
