@@ -58,11 +58,11 @@ body {
 .hidden {
     /* TO-DO: */
     /* enviar para fora da página */
-    opacity: 2;
+    opacity: 0;
 }
 
 .show {
     /* TO-DO: */
     /* trazer para dentro da página */
-    opacity: 2;
+    opacity: 0;
 }
