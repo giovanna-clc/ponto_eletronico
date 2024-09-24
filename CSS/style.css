@@ -25,10 +25,6 @@ body {
     text-align: center;
 }
 
-#btn-bater-ponto{
-    text-align: center;
-}
-
 #btn-dialog-fechar {
     position: absolute;
     top: 0;
@@ -74,6 +70,6 @@ body {
 }
 
 .data-hora p {
-    font-size: 2rem; /* tamanho relativo */
+    font-size: 1rem; /* tamanho relativo */
     /* ??? */
 }
