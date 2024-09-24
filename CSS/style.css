@@ -1,5 +1,7 @@
 body {
     background-color: rgb(208, 218, 253);
+    margin: 0;
+    padding: 0;
 }
 
 #titulo {
@@ -58,11 +60,13 @@ body {
 .hidden {
     /* TO-DO: */
     /* enviar para fora da página */
-    opacity: 0;
+    top: 20px;
+    opacity: 1;
 }
 
 .show {
     /* TO-DO: */
     /* trazer para dentro da página */
-    opacity: 0;
+    top: 20px;
+    opacity: 1;
 }
