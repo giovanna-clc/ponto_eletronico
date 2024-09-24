@@ -16,7 +16,7 @@ body {
     padding-left: 5px;
     padding-right: 5px;
     text-align: center;
-    background-color: #465088;
+    background-color: #5260ac;
 }
 
 .data-hora {
@@ -32,11 +32,15 @@ body {
 /* Posicionamento do alerta no topo da página com position fixed */
 #alerta-registro-ponto {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: -100;
+    left: 50%;
     width: 100%;
     background-color: #444e88;
     color: white;
+    transform: translateX(-50%);
+    padding: 20px;
+    opacity: 0; /* Começa invisível */
+    transition: top 0.5s ease, opacity 0.5s ease; /* Transições */
     /* TO-DO: */
     /* posicionar fora da página */
     /* pode usar o translate no eixo Y */
@@ -54,11 +58,11 @@ body {
 .hidden {
     /* TO-DO: */
     /* enviar para fora da página */
-    opacity: 0;
+    opacity: 2;
 }
 
 .show {
     /* TO-DO: */
     /* trazer para dentro da página */
-    opacity: 1;
+    opacity: 2;
 }
