@@ -34,15 +34,10 @@ body {
 /* Posicionamento do alerta no topo da página com position fixed */
 #alerta-registro-ponto {
     position: fixed;
-    top: -100px; /* Começa fora da tela */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffcc00;
-    padding: 20px;
-    border: 1px solid #ff9900;
-    border-radius: 5px;
-    opacity: 0; /* Começa invisível */
-    transition: top 0.5s ease, opacity 0.5s ease; /* Transições */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ccc;
     /* TO-DO: */
     /* posicionar fora da página */
     /* pode usar o translate no eixo Y */
@@ -60,13 +55,20 @@ body {
 .hidden {
     /* TO-DO: */
     /* enviar para fora da página */
-    top: 20px;
-    opacity: 1;
+    opacity: 0;
 }
 
 .show {
     /* TO-DO: */
     /* trazer para dentro da página */
-    top: 20px;
     opacity: 1;
+}
+
+#div-btn-bater-ponto {
+    text-align: center;
+}
+
+.data-hora p {
+    font-size: 2rem; /* tamanho relativo */
+    /* ??? */
 }
