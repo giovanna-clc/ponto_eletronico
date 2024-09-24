@@ -31,8 +31,10 @@ body {
     top: 0;
     right: 0;
     background-color: #171e47d5;
-    border: 2px solid #171e47;
-    border-radius: 10px; /* Raio de 10 pixels */
+    border-radius: 5px; /* Bordas arredondadas em botões */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
     font-family: 'Georgia', serif;
     color: white;
 }
