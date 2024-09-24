@@ -31,6 +31,8 @@ body {
     top: 0;
     right: 0;
     background-color: #171e47d5;
+    border: 2px solid #171e47;
+    border-radius: 10px; /* Raio de 10 pixels */
     font-family: 'Georgia', serif;
     color: white;
 }
@@ -41,7 +43,7 @@ body {
     color: white;
     width: 150px;
     height: 40px;
-    border: 2px solid #fffcfc;
+    border: 2px solid #293474ea;
     border-radius: 10px; /* Raio de 10 pixels */
 }
 
