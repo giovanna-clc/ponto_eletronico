@@ -61,18 +61,30 @@ btnCloseAlertRegister.addEventListener("click", () => {
 });
 
 const btnDialogBaterPonto = document.getElementById("btn-dialog-bater-ponto");
-btnDialogBaterPonto.addEventListener("click", async () => {
-    const typeRegister = document.getElementById("tipos-ponto");
+btnDialogBaterPonto.addEventListener("click", () => {
+
     let lastTypeRegister = localStorage.getItem("lastTypeRegister");
 
-    console.log(lastTypeRegister);
-
-    let userCurrentPosition = await getCurrentPosition();
+    // TO-DO:
+    // Pq o select não está com a option correspondente?
+    if(lastTypeRegister == "entrada") {
+        console.log("lastTypeRegister é entrada");
+        typeRegister.value = "intervalo";
+    }
+    if(lastTypeRegister == "intervalo") {
+        typeRegister.value = "volta-intervalo";
+    }
+    if(lastTypeRegister == "volta-intervalo") {
+        typeRegister.value = "saida";
+    }
+    if(lastTypeRegister == "saida") {
+        typeRegister.value = "entrada"
+    }
 
     let ponto = {
         "data": getCurrentDate(),
         "hora": getCurrentHour(),
-        "localizacao": userCurrentPosition,
+        "localizacao": getCurrentPosition(),
         "id": 1,
         "tipo": typeRegister.value
     }
@@ -81,13 +93,25 @@ btnDialogBaterPonto.addEventListener("click", async () => {
 
     saveRegisterLocalStorage(ponto);
 
+    localStorage.setItem("lastTypeRegister", typeRegister.value);
     localStorage.setItem("lastDateRegister", ponto.data);
     localStorage.setItem("lastTimeRegister", ponto.hora);
 
     dialogPonto.close();
 
+    // TO-DO:
+    // CRIAR UM ALERTA NO TOPO DA PÁGINA PRINCIPAL PARA CONFIRMAR O REGISTRO DE PONTO
+    // DEVE FICAR ABERTO POR 3 SEGUNDOS E DEVE TER UM EFEITO DE TRANSIÇÃO
+    // DEVE PODER SER FECHADO PELO USUÁRIO QUE NÃO QUISER AGUARDAR 3s
+    // DEVE MOSTRAR UMA MENSAGEM DE SUCESSO AO REGISTRAR O PONTO
+    // CASO OCORRA ALGUM ERRO, MOSTRAR NO ALERTA 
+    // AS CORES DEVEM SER DIFERENTES EM CASO DE SUCESSO/ERRO/ALERTA
+
     divAlertaRegistroPonto.classList.remove("hidden");
     divAlertaRegistroPonto.classList.add("show");
+    
+    // TO-DO:
+    // fazer um efeito de transição para o alerta
 
     setTimeout(() => {
         divAlertaRegistroPonto.classList.remove("show");
